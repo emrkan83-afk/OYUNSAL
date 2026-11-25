@@ -5431,7 +5431,7 @@ function taxiDest(){const c=CAREER,L=[];const td=c.phase==='td';
 function taxiHTML(){const c=CAREER,L=taxiDest();let h=hdr('Taksi')+`<div class="ph-card big"><small>${c.car&&!stGuest()?'Araban var: yolculuk ücretsiz':'BiTaksi · sabit ücret'}</small><div>${c.car&&!stGuest()?esc(c.car.n||'Araban'):'Her yolculuk ₺'+TAXI_P}${stOn()&&!stGuest()?` · ${esc(COOP.peerName||'Doruk')} yanındaysa aynı taksiye biner, tek ücret`:''}</div></div>`;
   if(!L.length)return h+'<p class="ph-empty">Henüz çocuksun, her yere babanla gidiyorsun. Profesyonel olunca taksi çağırabilirsin.</p>';
   if(!['roam','sit','phone'].includes(mode))return h+'<p class="ph-empty">Şu an taksi çağıramazsın.</p>';
-  return h+L.map(([k,n])=>`<div class="ph-card"><div>${esc(n)}</div><div class="ph-row"><button data-taxi="${k}">${k==='baba'?'👨 Bin':'🚕 Çağır'}${k==='baba'||(c.car&&!stGuest())?'':' · ₺'+TAXI_P}</button></div></div>`).join('');}
+  return h+L.map(([k,n])=>`<div class="ph-card"><div>${esc(n)}</div><div class="ph-row"><button data-taxi="${k}">${k.startsWith('baba')?'👨 Bin':'🚕 Çağır'}${k.startsWith('baba')||(c.car&&!stGuest())?'':' · ₺'+TAXI_P}</button></div></div>`).join('');}
 {const _rpT=renderPhone;renderPhone=function(){_rpT();if(PHONE.app==='taxi'){const b=phoneEl.querySelector('.ph-body');if(b)b.innerHTML=taxiHTML();}};}
 function taxiGo(k){const c=CAREER;const free=!!c.car&&!stGuest();if(!free&&!payC(TAXI_P))return;phoneToggle(false);
   const near=typeof stOn==='function'&&stOn()&&!stGuest()&&typeof P2!=='undefined'&&P2&&!P2.gone&&hyp(P2.x-me.x,P2.z-me.z)<30;
@@ -8768,6 +8768,23 @@ function phySurf(){const k=(typeof V!=='undefined'&&V.key)||'';const rain=typeof
  try{col(cx-0.5,cx+0.5,cz-1.0,cz+1.0);}catch(e){}
 }catch(e){console.warn('emirBed',e);}})();
 {const _cs=cityState;cityState=function(){const r=_cs.apply(this,arguments);try{if(typeof stGuest==='function'&&stGuest()&&COOP.mySlot===1&&W15.bedE)CITY.bed=W15.bedE.slice();}catch(e){}return r;};}
+
+</script>
+<script>
+// ===== BABAM GÖTÜRSÜN: şehirde kendi ev alınana kadar (lojman / kiralık) baban ücretsiz mahalleye götürür, şehre geri bırakır · Akif, Doruk, Emir hepsi =====
+function babaOK(){const c=CAREER;return !!(c&&c.city&&c.house!=='satilik');}
+const BABA_L=['Hadi aslanım, bin bakalım. Kemerini tak.','Annen sarma yaptı, kokusu sokağa çıktı.','Yolda ekmek alalım, unutma.','Trafik yine felaket, sabırla gideceğiz.','Maçını izledim, iyiydin ama daha çok koşacaksın.'];
+function babaGo(where){const g=stGuest();const toMah=where==='mah';
+ const done=()=>{toast(toMah?'👨 Baban bıraktı · Bizim Sokak':'👨 Baban bıraktı · Şehir','"'+pick(BABA_L)+'"',2400);};
+ if(g){CAREER.inMahalleNow=toMah;if(toMah)gTp(-6,38,'Bizim Sokak');else gTp(CITY.door[0],CITY.door[1]+1.5,typeof cityName==='function'?cityName():'Şehir');setTimeout(done,900);return;}
+ const near=typeof stOn==='function'&&stOn()&&typeof P2!=='undefined'&&P2&&!P2.gone&&hyp(P2.x-me.x,P2.z-me.z)<30;
+ travelTo(toMah?'mahalle':'city');setTimeout(()=>{done();if(near)try{mqPush('tp',me.x.toFixed(1),me.z.toFixed(1));mqPush('note','Akif\'in babası seni de arabaya aldı.','👨 BABA');}catch(e){}},1200);}
+// telefon taksi uygulamasında
+{const _td=taxiDest;taxiDest=function(){const L=_td.apply(this,arguments);try{if(babaOK()){if(!CAREER.inMahalleNow&&me.z>300)L.unshift(['babaM','👨 Babam mahalleye götürsün (ücretsiz)']);else L.unshift(['babaC','👨 Babam şehre bıraksın (ücretsiz)']);}}catch(e){}return L;};}
+{const _tg=taxiGo;taxiGo=function(k){if(k==='babaM'||k==='babaC'){try{phoneToggle(false);}catch(e){}babaGo(k==='babaM'?'mah':'city');return;}return _tg.apply(this,arguments);};}
+// yolculuk menüsü (E): şehirde önce "nasıl gidelim?"
+{const _ot=openTravel;openTravel=function(){if(!babaOK())return _ot.apply(this,arguments);const inM=CAREER.inMahalleNow||me.z<300;
+  dialog([{who:'Yolculuk',t:'Nasıl gidelim?',o:[{t:inM?'👨 Babam şehre bıraksın (ücretsiz)':'👨 Babamı ara, mahalleye götürsün (ücretsiz)',f:()=>setTimeout(()=>babaGo(inM?'city':'mah'),10)},{t:CAREER.car&&!stGuest()?'🚗 Arabam / diğer yerler':'🚕 Taksi / diğer yerler',f:()=>setTimeout(()=>_ot(),10)},{t:'Vazgeç'}]}]);};}
 
 </script>
 </body>

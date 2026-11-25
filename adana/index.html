@@ -3532,8 +3532,8 @@ function zLocalTick(dt){for(let i=ZLOC.length-1;i>=0;i--){const o=ZLOC[i];if(o.t
 // D1 yağmurda şemsiye · D2 yağmurda hızlanma · D3 telefonla konuşan · D4 sigara içen yayalar
 const ZUMB=new THREE.Group();{const B=MB.make();MB.cyl(B,0.015,0.015,0.9,0x222222,{y:0.45},5);MB.cyl(B,0.04,0.62,0.28,0xffffff,{y:0.95},9,false);ZUMB.userData.geo=MB.geo(B);}
 const UMBC=[0x1a1a1a,0x2a4a8a,0x8a1a2a,0x3a6a3a,0x6a2a6a];
-function zCivLook(dt){const rain=zRain();for(const n of NPCS){if((n.kind!=='civ'&&n.kind!=='youth')||!n.hb.alive||!n.H)continue;const d=Math.abs(n.x-camera.position.x)+Math.abs(n.z-camera.position.z);if(d>70)continue;const H=n.H;
-  if(rain){if(!H._umb){const m=new THREE.Mesh(ZUMB.userData.geo,new THREE.MeshLambertMaterial({vertexColors:true,color:UMBC[n.id%UMBC.length]}));m.position.set(0,-0.28,0.05);m.rotation.x=-Math.PI/2;H.aL.fo.add(m);H._umb=m;}H._umb.visible=true;H.aL.a.rotation.set(-1.9,0,0.25);H.aL.fo.rotation.x=-1.1;if(!NET.guest&&n.state!=='flee'){n.x+=(n.vx||0)*dt*0.55;n.z+=(n.vz||0)*dt*0.55;}continue;}
+function zCivLook(dt){const rain=zRain();for(const n of NPCS){if((n.kind!=='civ'&&n.kind!=='youth')||!n.hb.alive||!n.H||n.inmate||INROOM)continue;const d=Math.abs(n.x-camera.position.x)+Math.abs(n.z-camera.position.z);if(d>70)continue;const H=n.H;
+  if(rain){if(!H._umb){const m=new THREE.Mesh(ZUMB.userData.geo,new THREE.MeshLambertMaterial({vertexColors:true,color:UMBC[n.id%UMBC.length],side:THREE.DoubleSide}));const sx=(H.aL.a.position&&H.aL.a.position.x)||0.3;m.position.set(sx*0.8,1.28,0.3);H.g.add(m);H._umb=m;}H._umb.visible=true;H.aL.a.rotation.set(-1.15,0,0.08);H.aL.fo.rotation.x=-1.25;if(!NET.guest&&n.state!=='flee'){n.x+=(n.vx||0)*dt*0.55;n.z+=(n.vz||0)*dt*0.55;}continue;}
   if(H._umb)H._umb.visible=false;const kind=n.id%10;if(kind===1){H.aL.a.rotation.set(-2.5,0,0.5);H.aL.fo.rotation.x=-2.0;H.head.rotation.z=0.12;if(!H._ph){const p=box(0.05,0.1,0.015,0x111111,0,-0.3,0.04,H.aL.fo,false);H._ph=p;}}
   else if(kind===2){if(!H._cig){H._cig=box(0.012,0.012,0.08,0xf2f2f2,0,-0.33,0.06,H.aR.fo,false);}if((performance.now()/1000+n.id)%6<1.2){H.aR.a.rotation.set(-2.3,0,-0.3);H.aR.fo.rotation.x=-1.9;}else if(Math.random()<dt*0.5){zSmoke(n.x+Math.sin(n.face)*0.3,(n.y||0)+1.7,n.z+Math.cos(n.face)*0.3,1,0xd8d8d8,0.05,1.5);}}}}
 // D5 sohbet eden yayalar (durup konuşan çiftler) · D12 kapı önünde tabureli teyzeler · D19 okul çıkışı çocuklar
@@ -6532,7 +6532,7 @@ function ragPose(H,dt){const R=H.rag||(H.rag=ragInit(H));R.t+=dt;const P2=Math.P
  H.dead=Math.max(H.dead,Math.min(1,0.01+p));}
 function ragReset(H){if(!H.rag)return;H.rag=null;H.g.rotation.x=0;H.g.rotation.z=0;H.hip.position.y=0.92;if(H.torso)H.torso.rotation.set(0,0,0);if(H.head)H.head.rotation.set(0,0,0);for(const L of [H.lL,H.lR])if(L){L.l.rotation.set(0,0,0);L.kn.rotation.set(0,0,0);}}
 // ---------- 2) vurulunca sarsılma ----------
-function flinchPose(H,dt){const F=H.flinch;F.t-=dt;const u=Math.max(0,F.t)/F.T;const k=Math.sin(u*Math.PI)*F.k;H.torso.rotation.x+=-k*0.35*F.fz;H.torso.rotation.z+=k*0.25*F.fx;if(H.head){H.head.rotation.x+=-k*0.5*F.fz;}if(F.t<=0)H.flinch=null;}
+function flinchPose(H,dt){const F=H.flinch;F.t-=dt;const u=Math.max(0,F.t)/F.T;const k=Math.sin(u*Math.PI)*F.k;H.torso.rotation.x+=-k*0.22*F.fz;H.torso.rotation.z=k*0.1*F.fx;if(H.head){H.head.rotation.x+=-k*0.25*F.fz;}if(F.t<=0){H.flinch=null;H.torso.rotation.z=0;}}
 function ragPatch(H){if(!H||H._rp||typeof H.anim!=='function'||!H.hip||!H.lL)return H;H._rp=1;const _a=H.anim;H.anim=function(dt){if(H.dead>0){ragPose(H,dt);return;}if(H.rag)ragReset(H);const r=_a.apply(this,arguments);if(H.flinch)flinchPose(H,dt);return r;};return H;}
 {const _mk=mkHuman;mkHuman=function(o){return ragPatch(_mk.apply(this,arguments));};}
 try{if(PL.H)ragPatch(PL.H);}catch(e){}
@@ -6541,8 +6541,8 @@ const PUSH=[];
 {const _nd=NPCDMG;NPCDMG=function(n,dmg,head,from,melee){try{if(n&&n.H){n.H._lastHit={dmg,head:!!head};}}catch(e){}const r=_nd.apply(this,arguments);
   try{if(n&&n.H&&n.hb&&n.hb.alive&&!melee&&dmg>3){const sx=from==='me'||from==='h'?PL.x:n.x-Math.sin(n.face||0),sz=from==='me'||from==='h'?PL.z:n.z-Math.cos(n.face||0);let dx=n.x-sx,dz=n.z-sz;const d=Math.hypot(dx,dz)||1;dx/=d;dz/=d;
    const f=n.face||0;const lz=dx*Math.sin(f)+dz*Math.cos(f),lx=dx*Math.cos(f)-dz*Math.sin(f);
-   n.H.flinch={t:0.22,T:0.22,k:Math.min(1,0.35+dmg/45)*(head?1.3:1),fz:-lz,fx:lx};
-   const imp=Math.min(1.6,dmg/40);PUSH.push({n,vx:dx*imp,vz:dz*imp,t:0.25});if(PUSH.length>30)PUSH.shift();}}catch(e){}return r;};}
+   n.H.flinch={t:0.2,T:0.2,k:Math.min(0.6,0.2+dmg/80)*(head?1.2:1),fz:-lz,fx:lx};
+   const imp=Math.min(0.8,dmg/60);PUSH.push({n,vx:dx*imp,vz:dz*imp,t:0.25});if(PUSH.length>30)PUSH.shift();}}catch(e){}return r;};}
 XT.push(function pushTick(dt){for(let i=PUSH.length-1;i>=0;i--){const P=PUSH[i];P.t-=dt;const n=P.n;if(P.t<=0||!n.hb||!n.hb.alive){PUSH.splice(i,1);continue;}const o={x:n.x+P.vx*dt,z:n.z+P.vz*dt};try{collide(o,0.35,n.y||0);}catch(e){}n.x=o.x;n.z=o.z;P.vx*=Math.pow(0.02,dt);P.vz*=Math.pow(0.02,dt);}});
 // ---------- 3) oyuncu: iniş sarsıntısı (kamera çöker, kısa yavaşlama) ----------
 const LAND={k:0,vy0:0,air:false};
@@ -6567,6 +6567,23 @@ function bulletSpeed(){try{const W=WEP[PL.cur]||{};return W.zoom?820:W.snd==='ri
   const m=new THREE.Mesh(kTrGeo,col?new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.85,blending:THREE.AdditiveBlending,depthWrite:false}):kTrMat);const dir=new THREE.Vector3(bx-ax,by-ay,bz-az).normalize();
   m.position.set(ax,ay,az);m.lookAt(ax+dir.x,ay+dir.y,az+dir.z);scene.add(m);TRS.push({m,a:new THREE.Vector3(ax,ay,az),dir,L,s:0,v:bulletSpeed()*rnd(0.95,1.05),own:!!col});};}
 XT.push(function trTick(dt){for(let i=TRS.length-1;i>=0;i--){const T=TRS[i];T.s+=T.v*dt;const head=Math.min(T.s,T.L);const len=Math.min(head,Math.max(1.2,T.v*0.012));T.m.position.copy(T.a).addScaledVector(T.dir,head);T.m.scale.set(1,1,len);if(T.s>=T.L+len){scene.remove(T.m);if(T.own)T.m.material.dispose();TRS.splice(i,1);}}});
+
+</script>
+<script>
+// ===== v1.4 · K3: nişanda sağa-sola salınım yok, cezaevi/mahkemede silah ve telefon el konur, mahkûmlar cezaevi kıyafeti giyer =====
+// 1) nişan salınımı kapalı (yaralıyken de)
+if(typeof zAimSway==='function')zAimSway=function(){};
+// 2) cezaevi ve mahkeme: silah elde görünmez / kullanılamaz, telefon (kaçak telefon yoksa) açılmaz
+function inJail(){try{return !!(window.JCOURT||(typeof JR!=='undefined'&&JR&&INROOM===JR));}catch(e){return false;}}
+XT.push(function jailGearTick(){const j=inJail();if(j&&PL.cur!=='yumruk'){PL._jprev=PL.cur;PL.cur='yumruk';PL.reload=0;try{PL.H.setGun(null);}catch(e){}if(typeof SC!=='undefined'&&SC.on)try{scKill();}catch(e){}}
+ else if(!j&&PL._jprev){const w=PL._jprev;PL._jprev=null;if(PL.inv[w]){PL.cur=w;try{PL.H.setGun(w);}catch(e){}}}
+ if(j&&UI.phoneOpen&&!(typeof JL==='function'&&JL().tel)){try{phoneToggle(false);}catch(e){}}});
+{const _sel=PL.select.bind(PL);PL.select=function(w){if(inJail()&&w!=='yumruk'){toast('🔒 Silahlara el konuldu','Cezaevinde sadece yumruk',1200);return;}return _sel(w);};}
+{const _pt=phoneToggle;phoneToggle=function(on){const want=on??!UI.phoneOpen;if(want&&inJail()&&!(typeof JL==='function'&&JL().tel)){toast('📵 Telefonuna el konuldu','Gardiyandan kaçak telefon alabilirsin',1600);return;}return _pt.apply(this,arguments);};}
+// 3) mahkûmlar: cezaevi kıyafeti (gri/turuncu tulum), sokaktaki insanlarla aynı görünmesin
+const INMATE_LOOK=[{shirt:0x8a8a82,pants:0x6e6e66},{shirt:0xc8692a,pants:0xb85e24},{shirt:0x7d7f86,pants:0x5f6168}];
+XT.push(function inmateLook(){if(typeof NPCS==='undefined')return;for(const n of NPCS){if(!n.inmate||n._ilook||!n.H||!n.hb||!n.hb.alive)continue;n._ilook=1;const L=INMATE_LOOK[(n.id||0)%INMATE_LOOK.length];
+  const H=mkHuman({shirt:L.shirt,pants:L.pants,hair:pick([0x111111,0x2b1d14,0x3b2618,0x555555]),beard:Math.random()<0.6});H.g.position.copy(n.H.g.position);H.g.rotation.y=n.H.g.rotation.y;scene.remove(n.H.g);scene.add(H.g);n.H=H;if(n.lbl)n.lbl.obj=H.g;}});
 
 </script>
 </body></html>

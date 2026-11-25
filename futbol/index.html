@@ -243,7 +243,7 @@ body.tdview #cross,body.tdview #duoPass{display:none!important}
 #wuBtn{position:fixed;left:14px;bottom:78px;z-index:31;font:800 13px Rubik;background:#2f5a3a;color:#fff;border:2px solid #7ad37a;border-radius:8px;padding:8px 12px;cursor:pointer}
 </style>
 <link rel="manifest" href="manifest.json"><meta name="theme-color" content="#0f5132"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
-<script>if('serviceWorker' in navigator){addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').then(r=>{r.update();});});}</script>
+<script>if('serviceWorker' in navigator){addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').then(r=>{r.update();});let rl=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(rl)return;rl=true;});});}</script>
 </head>
 <body>
 <canvas id="c"></canvas>

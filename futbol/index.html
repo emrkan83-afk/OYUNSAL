@@ -243,7 +243,7 @@ body.tdview #cross,body.tdview #duoPass{display:none!important}
 #wuBtn{position:fixed;left:14px;bottom:78px;z-index:31;font:800 13px Rubik;background:#2f5a3a;color:#fff;border:2px solid #7ad37a;border-radius:8px;padding:8px 12px;cursor:pointer}
 </style>
 <link rel="manifest" href="manifest.json"><meta name="theme-color" content="#0f5132"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
-<script>if('serviceWorker' in navigator){addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').then(r=>{r.update();});let rl=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(rl)return;rl=true;});});}</script>
+<script>if('serviceWorker' in navigator){addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').then(r=>{r.update();});});}</script>
 </head>
 <body>
 <canvas id="c"></canvas>
@@ -1136,7 +1136,7 @@ const OPP_TEAMS=[
  {n:'Sur Dibi',col:'#b5651d',shirts:[0xb5651d,0xa0521a,0xc77a2e,0x8a4515,0x2a2a2a],str:0.5,greet:'Sur Dibi\'nden selam! Bugün sert oynarız, haberiniz olsun.',cap:'Taner',players:[pl('Taner','FWD',A(5.5,0.5,0.7,0.6,0.4,0.5)),pl('Erkan','WING',A(5.8,0.55,0.55,0.6,0.45,0.55)),pl('Halil','MID',A(5.1,0.65,0.55,0.5,0.6,0.6)),pl('Dev Yusuf','DEF',A(4.9,0.45,0.45,0.35,0.88,0.4,{hard:1}),{trait:'hothead',nerve0:30}),pl('Kale Recep','GK',A(4.6,0.5,0.4,0.3,0.55,0.6,{gk:0.68}))]},
  {n:'Çeşmealtı',col:'#1f8a8a',shirts:[0x1f8a8a,0x2aa0a0,0x187070,0x125a5a,0xe24a9a],str:0.6,greet:'Pas pas pas! Bugün topu göremeyeceksiniz.',cap:'Doruk',players:[pl('Kerem','FWD',A(5.6,0.7,0.62,0.68,0.35,0.7)),pl('Ege','WING',A(6,0.72,0.55,0.66,0.4,0.7)),pl('Doruk','MID',A(5.4,0.88,0.6,0.7,0.5,0.85)),pl('Alper','DEF',A(5.1,0.7,0.4,0.5,0.72,0.7)),pl('Gözlüklü Can','GK',A(4.8,0.6,0.4,0.3,0.5,0.7,{gk:0.64}))]},
  {n:'İskele',col:'#7b3f8f',shirts:[0x7b3f8f,0x8f52a3,0x63307a,0x4d2160,0xe0a030],str:0.45,greet:'İskele\'den geldik, deniz havası aldık! Hazır mısınız?',cap:'Serdar',players:[pl('Serdar','FWD',A(5.6,0.45,0.6,0.8,0.3,0.4,{dribias:0.7}),{trait:'selfish'}),pl('Umut','WING',A(6,0.55,0.5,0.6,0.4,0.55)),pl('Volkan','MID',A(5.2,0.6,0.5,0.55,0.55,0.6)),pl('Cem','DEF',A(5,0.5,0.4,0.4,0.7,0.55)),pl('Rıfat','GK',A(4.6,0.5,0.4,0.3,0.5,0.6,{gk:0.6}))]},
- {n:'Fırın Sokak',col:'#d9a020',shirts:[0xd9a020,0xe8b030,0xc08a10,0xa07008,0x3a3a3a],str:0.55,greet:'Ekmek kokusu aldınız mı? Bugün sizi de pişireceğiz!',cap:'Emir',players:[pl('Emir','FWD',A(5.7,0.6,0.66,0.65,0.35,0.6)),pl('Tolga','WING',A(6.1,0.6,0.5,0.62,0.4,0.6)),pl('Onur','MID',A(5.3,0.7,0.55,0.6,0.55,0.7)),pl('Levent','DEF',A(5,0.55,0.4,0.4,0.76,0.6)),pl('Bora','GK',A(4.7,0.55,0.4,0.3,0.5,0.6,{gk:0.68}))]},
+ {n:'Fırın Sokak',col:'#d9a020',shirts:[0xd9a020,0xe8b030,0xc08a10,0xa07008,0x3a3a3a],str:0.55,greet:'Ekmek kokusu aldınız mı? Bugün sizi de pişireceğiz!',cap:'Enes',players:[pl('Enes','FWD',A(5.7,0.6,0.66,0.65,0.35,0.6)),pl('Tolga','WING',A(6.1,0.6,0.5,0.62,0.4,0.6)),pl('Onur','MID',A(5.3,0.7,0.55,0.6,0.55,0.7)),pl('Levent','DEF',A(5,0.55,0.4,0.4,0.76,0.6)),pl('Bora','GK',A(4.7,0.55,0.4,0.3,0.5,0.6,{gk:0.68}))]},
  {n:'Okul Bahçesi',col:'#4a4a52',shirts:[0x4a4a52,0x5a5a62,0x3a3a42,0x2a2a32,0xd9822b],str:0.6,greet:'Beden hocamız bizi çalıştırdı, bugün disiplin göreceksiniz.',cap:'Kaan',players:[pl('Kaan','FWD',A(5.8,0.65,0.64,0.66,0.4,0.8)),pl('Yiğit','WING',A(6.1,0.62,0.52,0.62,0.45,0.8)),pl('Arda','MID',A(5.4,0.75,0.58,0.6,0.6,0.85)),pl('Batuhan','DEF',A(5.2,0.6,0.4,0.45,0.75,0.8)),pl('Selçuk','GK',A(4.8,0.55,0.4,0.3,0.55,0.8,{gk:0.7}))]}];
 function setOpponents(t){OPP_TEAM=t;opps.forEach((p,i)=>{const o=t.players[i];reskin(p,Object.assign({team:1,shirt:t.shirts[i],shorts:0xeeeeee,skin:SK[(i+DAY)%5],hair:HR[(i+2*DAY)%5],num:i+3},o));p.x=OPP_WAIT[i][0];p.z=OPP_WAIT[i][1];p.face=-Math.PI/2;p.ring.visible=false;p.mesh.g.visible=true;p.lbl.style.display='';});}
 function hideOpponents(){opps.forEach(p=>{p.gone=true;p.mesh.g.visible=false;p.lbl.style.display='none';});}
@@ -1429,7 +1429,7 @@ const CAREER={phase:'mahalle',week:0,season:1,club:null,ratings:[],seasonR:[],se
 const MFIX=[0,1,2,3];
 function avgRating(a=CAREER.ratings){return a.length?a.reduce((x,y)=>x+y,0)/a.length:0;}
 function lastResultText(){const r=CAREER.lastMatch;return r?`${r.us} ${r.score[0]}-${r.score[1]} ${r.them}, Akif'in puanı ${r.rating.toFixed(1)}`:'henüz maç yok';}
-const FN=['Ahmet','Mehmet','Mustafa','Yusuf','Emir','Ömer','Burak','Eren','Kaan','Arda','Deniz','Barış','Can','Cem','Efe','Onur','Serkan','Tolga','Ufuk','Volkan','Yasin','Batuhan','Furkan','Ozan','Kerem','Umut','Tarık','Halil','İsmail','Sinan','Oğuz','Taylan','Berkay','Alper','Rıdvan','Uğur','Enes','Doğukan','Okan','Selçuk'];
+const FN=['Ahmet','Mehmet','Mustafa','Yusuf','Selim','Ömer','Burak','Eren','Kaan','Arda','Deniz','Barış','Can','Cem','Efe','Onur','Serkan','Tolga','Ufuk','Volkan','Yasin','Batuhan','Furkan','Ozan','Kerem','Umut','Tarık','Halil','İsmail','Sinan','Oğuz','Taylan','Berkay','Alper','Rıdvan','Uğur','Enes','Doğukan','Okan','Selçuk'];
 const SN=['Yılmaz','Kaya','Demir','Şahin','Çelik','Yıldız','Aydın','Öztürk','Arslan','Doğan','Kılıç','Aslan','Çetin','Kara','Koç','Kurt','Özdemir','Polat','Erdoğan','Güneş','Tekin','Aksoy','Bulut','Uçar','Sarı','Ateş','Turan','Keskin'];
 const genName=()=>`${pick(FN)} ${pick(SN)}`;
 const CLUBS={
@@ -5578,8 +5578,8 @@ setTimeout(fac7Paint,700);
     if(D.kind==='dorm'){for(let k=0;k<5;k++){const x=ox+1.6+k*2.6;w4box(g,1,0.35,2,x,0.3,oz+1.4,im(0x6b4a30));w4box(g,0.95,0.15,1.9,x,0.55,oz+1.4,im(0xf2f2f2));w4box(g,0.95,0.06,1.2,x,0.64,oz+1.7,im(0xe24a33));w4box(g,0.6,0.12,0.3,x,0.66,oz+0.6,im(0xffffff));col(x-0.5,x+0.5,oz+0.4,oz+2.4);w4box(g,0.5,1.8,0.5,x+1.0,0.9,oz+0.4,im(0x5a6a7a));}
       w4box(g,2.4,0.06,1,ox+3,0.76,oz+6,im(0x8a5a32));w4box(g,0.08,0.76,0.08,ox+3,0.38,oz+6,im(0x333333));col(ox+1.8,ox+4.2,oz+5.5,oz+6.5);w4box(g,0.3,0.25,0.2,ox+2.2,0.92,oz+6,im(0xd9a020));
       w4box(g,2.4,0.45,0.9,ox+w-3,0.23,oz+7.6,im(0x3e4e6c));w4box(g,2.4,0.6,0.2,ox+w-3,0.7,oz+8,im(0x3e4e6c));col(ox+w-4.2,ox+w-1.8,oz+7.1,oz+8.1);w4box(g,1.8,1.0,0.08,ox+w-3,1.4,oz+0.12,im(0x111111));
-      const yp=mkNPC({name:'Altyapı oyuncusu Emir',shirt:0xe24a33,shorts:0x1d242c,skin:0xd9a77f,hair:0x2b1d14});yp.x=ox+w-3;yp.z=oz+7.5;yp.face=Math.PI;yp.sit=true;
-      inter({npc:yp,r:2.6,label:()=>'Altyapı oyuncusuyla konuş',f:()=>dialog([{who:'Emir (U19)',t:pick(['Hocam bir gün A takımda oynayacağım, söz veriyorum!','Akşam antrenmandan sonra ekstra şut çalışıyorum.','Annem her gün arıyor, burayı çok özledim ama hayalim için buradayım.','Hocam altyapı maçına gelecek misiniz? Çok heyecanlıyız!'])}])});}
+      const yp=mkNPC({name:'Altyapı oyuncusu Yiğit',shirt:0xe24a33,shorts:0x1d242c,skin:0xd9a77f,hair:0x2b1d14});yp.x=ox+w-3;yp.z=oz+7.5;yp.face=Math.PI;yp.sit=true;
+      inter({npc:yp,r:2.6,label:()=>'Altyapı oyuncusuyla konuş',f:()=>dialog([{who:'Yiğit (U19)',t:pick(['Hocam bir gün A takımda oynayacağım, söz veriyorum!','Akşam antrenmandan sonra ekstra şut çalışıyorum.','Annem her gün arıyor, burayı çok özledim ama hayalim için buradayım.','Hocam altyapı maçına gelecek misiniz? Çok heyecanlıyız!'])}])});}
     if(D.kind==='press'){const chG=new THREE.BoxGeometry(0.5,0.5,0.5);for(let r=0;r<4;r++)for(let k=0;k<7;k++){const x=ox+2.2+k*1.5,z=oz+4.5+r*1.2;w4box(g,0.5,0.08,0.5,x,0.46,z,im(0x1d242c));w4box(g,0.5,0.5,0.06,x,0.72,z+0.22,im(0x1d242c));}
       w4box(g,5,0.3,1.8,ox+w/2,0.15,oz+1.5,im(0x2a2f36));w4box(g,4,0.8,0.7,ox+w/2,0.7,oz+1.5,im(0xf2f2f2));col(ox+w/2-2.5,ox+w/2+2.5,oz+0.6,oz+2.4);
       for(let k=0;k<3;k++){const m=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.3,6),im(0x111111));m.position.set(ox+w/2-1+k,1.25,oz+1.7);g.add(m);}
@@ -6775,7 +6775,7 @@ const tbxT=()=>{const t=tbxSt().tac;return k=>t.includes(k);};
    inter({x:ox+4.2,y:0.8,z:oz+2.8,r:1.6,label:()=>'😴 Kısa şekerleme (30 dk)',f:()=>{fade(true);setTimeout(()=>{tod=Math.min(tod+0.5,23.5);fade(false);toast('😴 Şekerleme','Dinçleştin, hadi antrenmana!',1400);try{lock();}catch(e){}},700);}});
    const tv=new THREE.Mesh(new THREE.PlaneGeometry(1.7,0.95),new THREE.MeshBasicMaterial({map:canv(170,95,(q)=>{q.fillStyle='#2f7d45';q.fillRect(0,0,170,95);q.strokeStyle='#fff';q.strokeRect(6,6,158,83);q.beginPath();q.moveTo(85,6);q.lineTo(85,89);q.stroke();q.fillStyle='#e24a33';[[40,30],[60,60],[110,40]].forEach(([x,y])=>{q.beginPath();q.arc(x,y,4,0,7);q.fill();});q.fillStyle='#fff';q.font='700 12px Arial';q.fillText('FIFA 27 · 2-1',8,20);})}));tv.position.set(ox+w-3,1.4,oz+0.17);g.add(tv);
    [[ox+w-4,oz+2.2],[ox+w-2,oz+2.2]].forEach(([x,z])=>{const bb=new THREE.Mesh(new THREE.SphereGeometry(0.45,10,8),im(pick([0xc0392b,0x2a6fb0])));bb.scale.set(1,0.6,1);bb.position.set(x,0.27,z);g.add(bb);});
-   inter({x:ox+w-3,y:0.8,z:oz+2.4,r:1.8,label:()=>'🎮 Takım arkadaşıyla FIFA oyna',f:()=>{const w2=Math.random()<0.5;dialog([{who:'Altyapı oyuncusu Emir',t:w2?'Yine mi yendin abi! Rövanş isterim!':'Hahaha! Gerçekte değil ama burada seni yendim!'}]);}});
+   inter({x:ox+w-3,y:0.8,z:oz+2.4,r:1.8,label:()=>'🎮 Takım arkadaşıyla FIFA oyna',f:()=>{const w2=Math.random()<0.5;dialog([{who:'Altyapı oyuncusu Yiğit',t:w2?'Yine mi yendin abi! Rövanş isterim!':'Hahaha! Gerçekte değil ama burada seni yendim!'}]);}});
    ['ŞAMPİYON OLACAĞIZ','DİSİPLİN · EMEK · TAKIM'].forEach((t,i)=>{const p=new THREE.Mesh(new THREE.PlaneGeometry(2.6,0.6),new THREE.MeshBasicMaterial({map:signTex(t,'#1d242c','#ffc83d')}));p.position.set(ox+0.14,2.2-i*0.0,oz+3+i*4);p.rotation.y=Math.PI/2;g.add(p);});
    const rug=new THREE.Mesh(new THREE.PlaneGeometry(3,2),im(0x5a3a6a));rug.rotation.x=-Math.PI/2;rug.position.set(ox+w-3,0.025,oz+2.6);g.add(rug);}
   // fitness: ağırlık istasyonu + motivasyon posteri
@@ -7230,8 +7230,8 @@ function w13Hollow(D){const G=AY.G,Z=-420;const {x0,x1,z0,z1,h,c,dx,face}=D;cons
     B(2.4,0.06,1.2,74,0.76,62.5,0x8a5a32);B(0.1,0.76,0.1,74,0.38,62.5,0x333333);C(72.8,75.2,61.9,63.1);[[72.6],[75.4]].forEach(([x])=>B(0.45,0.45,0.45,x,0.23,62.5,0x5a3a22));
     const rug=new THREE.Mesh(new THREE.PlaneGeometry(3,2.4),dimM(0x5a3a6a));rug.rotation.x=-Math.PI/2;rug.position.set(64.5,0.04,61.5);g.add(rug);
     ['ŞAMPİYON OLACAĞIZ','DİSİPLİN · EMEK · TAKIM'].forEach((t,i)=>{const p=new THREE.Mesh(new THREE.PlaneGeometry(2.8,0.6),new THREE.MeshBasicMaterial({map:signTex(t,'#1d242c','#ffc83d')}));p.position.set(70+i*9,2.6,67.64);p.rotation.y=Math.PI;g.add(p);});
-    const em=npc({name:'Altyapı oyuncusu Emir',adult:false,shirt:0xe24a33,shorts:0x1d242c,skin:0xd9a77f,hair:0x2b1d14},64.6,61.5,-Math.PI/2,true);
-    inter({npc:em,r:2.6,label:()=>'🎮 Emir\'le FIFA oyna',f:()=>{const w=Math.random()<0.5;dialog([{who:'Altyapı oyuncusu Emir',t:w?'Yine mi yendin abi! Rövanş!':'Hahaha! Gerçekte değil ama burada seni yendim!'}]);}});
+    const em=npc({name:'Altyapı oyuncusu Yiğit',adult:false,shirt:0xe24a33,shorts:0x1d242c,skin:0xd9a77f,hair:0x2b1d14},64.6,61.5,-Math.PI/2,true);
+    inter({npc:em,r:2.6,label:()=>'🎮 Yiğit\'le FIFA oyna',f:()=>{const w=Math.random()<0.5;dialog([{who:'Altyapı oyuncusu Yiğit',t:w?'Yine mi yendin abi! Rövanş!':'Hahaha! Gerçekte değil ama burada seni yendim!'}]);}});
     inter({x:64.5,y:0.9,z:Z+65,r:1.8,label:()=>canSleep()?'🛏️ Yatakhanede yat ve uyu (kamp)':'🛏️ Yatak (uyku vakti gelmedi)',f:()=>{if(canSleep()){toast('🌙 Kampta uyuyorsun','Takım arkadaşların horluyor...',1500);setTimeout(()=>endDay(),900);}else toast('Daha erken!','Önce günün işlerini bitir',1200);}});
     inter({x:68.1,y:0.9,z:Z+65,r:1.6,label:()=>'😴 Kısa şekerleme (30 dk)',f:()=>{fade(true);setTimeout(()=>{tod=Math.min(tod+0.5,23.5);fade(false);toast('😴 Şekerleme','Dinçleştin',1300);try{lock();}catch(e){}},700);}});}});
   // BASIN MERKEZİ
@@ -7940,7 +7940,7 @@ function w18Suggest(S,cur){if(!S||S.m<3)return null;const m=S.m;const gpm=S.g/m,
     // kadroda sakatlık
     if(c.injMate&&c.matchIdx>=c.injMate.back){setTimeout(()=>phoneMsg(c.club.coach||'Hoca',`${c.injMate.n} sakatlığını atlattı, kadroya döndü. Herkes kendi mevkisine.`),9000);c.injMate=null;c.injPos=null;}
     else if(!c.injMate&&c.injKey!==key&&Math.random()<0.13&&c.squad&&c.squad.length>8){c.injKey=key;const cand=c.squad.slice(1,11).filter(n=>typeof n==='string');const n=cand.length?pick(cand):null;if(n){const wk=2+Math.floor(Math.random()*3);const role=pick(['ST','CAM','CM','ST']);const fitA=w18Suggest(SA,c.pos.A),fitP=SP?w18Suggest(SP,c.pos.P):null;const who=role==='ST'?(fitA&&fitA[0]==='ST'?'A':fitP&&fitP[0]==='ST'?'P':(Math.random()<0.5||!stOn()?'A':'P')):(Math.random()<0.6||!stOn()?'A':'P');
-      const sub=pick(['Genç Emir Çelik','Genç Berk Yıldırım','Genç Yusuf Arslan','Genç Kaan Polat','Genç Efe Aydın']);c.injMate={n,role,back:c.matchIdx+wk,sub};c.injPos={};const useUs=Math.random()<0.65;if(useUs)c.injPos[who]=role;
+      const sub=pick(['Genç Efe Çelik','Genç Berk Yıldırım','Genç Yusuf Arslan','Genç Kaan Polat','Genç Efe Aydın']);c.injMate={n,role,back:c.matchIdx+wk,sub};c.injPos={};const useUs=Math.random()<0.65;if(useUs)c.injPos[who]=role;
       setTimeout(()=>{try{const nm=who==='A'?'Akif':friendName();phoneMsg(c.club.coach||'Hoca',`Kötü haber: ${n} antrenmanda sakatlandı, ${wk} hafta yok. ${useUs?`${nm}, onun yerine seni ${W18POS[role].tr} oynatacağım. Hazır ol!`:`Yerine altyapıdan ${sub} oynayacak. Siz kanatlarda devam.`}`);queuePaper(`${c.club.n}'da sakatlık şoku!`,`${n} ${wk} hafta sahalardan uzak kalacak. ${useUs?`Hocanın çözümü: ${nm} ${W18POS[role].tr}.`:`Forma şansı ${sub}'a.`}`,'SAKATLIK');if(stOn())mqPush('note',`${n} ${wk} hafta yok. ${useUs?nm+' '+W18POS[role].tr+' oynayacak.':''}`,'🚑 SAKATLIK');}catch(e){}},8500);}}
     // hoca istatistiklere bakıp mevki denemek istesin
     else if(c.ccKey!==key&&!c.coachCall&&false){const opts=[];const a=w18Suggest(SA,c.pos.A);if(a)opts.push(['A',a]);const p=SP?w18Suggest(SP,c.pos.P):null;if(p)opts.push(['P',p]);if(opts.length){c.ccKey=key;const [k,[pos,why]]=pick(opts);c.coachCall={k,pos,why,day:DAY};
@@ -8060,7 +8060,7 @@ function w19Apt(){const c=CAREER;const k=stGuest()?'aptD':'aptA';if(!c[k])c[k]={
 (function fam19(){try{inter({x:2.0,y:1,z:49.4,r:3.2,cond:()=>PRO()&&CAREER.inMahalleNow!==false&&!(FLAG&&FLAG.famDone),label:()=>stGuest()?'👪 Akif\'in ailesine misafir ol (akşam yemeği)':'👪 Annenle babanı ziyaret et (akşam yemeği)',f:()=>w19Visit()});}catch(e){console.warn('fam19',e);}})();
 function w19Visit(){const c=CAREER;const g=stGuest();const yemek=pick(['karnıyarık','mantı','kuru fasulye pilav','içli köfte','fırında tavuk','yaprak sarması']);FLAG.famDone=1;
   fade(true);setTimeout(()=>{fade(false);try{tod=Math.max(tod,19.5);}catch(e){}
-    dialog([{who:'Annen',t:g?`Doruk oğlum hoş geldin! Akif'in kardeşi sayılırsın. ${yemek} yaptım, otur bakalım.`:`Oğlum geldin mi! Yüzün sararmış, ${yemek} yaptım, otur hemen.${c.famHouse?' Yeni evde ilk misafirimiz sensin!':''}`},
+    dialog([{who:'Annen',t:g?`${(typeof myName==='function'?myName():'Doruk')} oğlum hoş geldin! Akif'in kardeşi sayılırsın. ${yemek} yaptım, otur bakalım.`:`Oğlum geldin mi! Yüzün sararmış, ${yemek} yaptım, otur hemen.${c.famHouse?' Yeni evde ilk misafirimiz sensin!':''}`},
       {who:'Baban',t:pick(['Maçını kahvede izledik, bütün mahalle seni konuşuyor.','Para pul gelir geçer evlat, sen ayağını yere sağlam bas.','Hakeme itiraz etme, kartı görünce yüreğim ağzıma geliyor.',c.capt?'Kaptan olmuşsun! Pazubendi görünce gözlerim doldu.':'Bir gün kaptan olacaksın, ben biliyorum.'])},
       {who:'',t:'Ne konuşalım?',o:[
         {t:'Kariyerimi anlat (tavsiye iste)',f:()=>[{who:'Annen',t:pick(['Paran çok olunca arkadaş da çok olur. Kankanı bırakma, o seni para yokken de severdi.','Gece geç yatma, kendine iyi bak. Bir de şu Kara Ahmet\'e laf atma, annesi bana dert yanıyor.','Hoca ne derse yap ama içinden geleni de oyna. Sen mahallede de öyle oynardın.'])}]},
@@ -8165,7 +8165,7 @@ const W20V={x:-430,z:318,w:26,d:20};
   // etkileşimler
   inter({x:VX+6,y:1,z:VZ+19.3,r:1.8,cond:()=>w20InV(),label:()=>'🚪 Villadan çık (şehre)',f:()=>{W20.inVilla=false;CAREER.inMahalleNow=false;if(stGuest())gTp(CITY.door[0],CITY.door[1]+1.5,cityName());else{fade(true);setTimeout(()=>{fade(false);me.x=CITY.door[0];me.z=CITY.door[1]+1.5;me.y=0;mode='roam';},700);}}});
   inter({x:VX+20,y:0.5,z:VZ+17.6,r:2.2,label:()=>FLAG.pool?'🏊 Havuz (bugün yüzdün)':'🏊 Havuzda yüz (dinlen)',f:()=>{if(FLAG.pool)return;FLAG.pool=1;fade(true);setTimeout(()=>{fade(false);try{tod=Math.min(23.5,tod+0.75);}catch(e){}const c=CAREER;c.famB=c.famB||{};if(stGuest())mqPush('w19fam','1');else c.famB.A=Math.max(c.famB.A||0,DAY+1);toast('🏊 Serinledin','Kasların gevşedi · yarın maçta biraz daha dinç',2200);},900);}});
-  inter({x:VX+2.2,y:0.8,z:VZ+2.2,r:1.8,label:()=>'🎮 FIFA oyna',f:()=>{const a=Math.floor(Math.random()*5),b=Math.floor(Math.random()*5);const fr=stOn()?(stGuest()?'Akif':friendName()):'Emir (bilgisayar)';dialog([{who:'',t:`🎮 ${myName()} ${a} - ${b} ${fr}`},{who:fr,t:a>b?'Rövanş istiyorum, gamepad bozuktu!':a<b?'Mahallede de böyleydin, kolay kolay yenilmem 😎':'Penaltılara gitsek ben alırdım.'}]);}});
+  inter({x:VX+2.2,y:0.8,z:VZ+2.2,r:1.8,label:()=>'🎮 FIFA oyna',f:()=>{const a=Math.floor(Math.random()*5),b=Math.floor(Math.random()*5);const fr=stOn()?(stGuest()?'Akif':friendName()):'Bilgisayar';dialog([{who:'',t:`🎮 ${myName()} ${a} - ${b} ${fr}`},{who:fr,t:a>b?'Rövanş istiyorum, gamepad bozuktu!':a<b?'Mahallede de böyleydin, kolay kolay yenilmem 😎':'Penaltılara gitsek ben alırdım.'}]);}});
   inter({x:VX+4.5,y:0.9,z:VZ+5,r:1.8,label:()=>'🎱 Bilardo oyna',f:()=>{const win=Math.random()<0.55;toast(win?'🎱 Siyahı soktun!':'🎱 Beyazı soktun...',win?'Kazandın':'Kaybettin',1800);}});
   inter({x:VX+14,y:1,z:VZ+6.2,r:2.4,label:()=>'🚗 Arabayla şehre çık',f:()=>{W20.inVilla=false;CAREER.inMahalleNow=false;if(stGuest())return gTp(CITY.door[0],CITY.door[1]+1.5,cityName());fade(true);setTimeout(()=>{fade(false);const o=w14CarObj();if(o){me.x=o.position.x+1.6;me.z=o.position.z;me.yaw=Math.PI/2;}else{me.x=CITY.door[0];me.z=CITY.door[1]+1.5;}me.y=0;mode='roam';},700);}});
   inter({x:VX+11,y:1.5,z:VZ+19.2,r:1.8,label:()=>`🏆 Kupa rafı (${(CAREER.trophies||[]).length} kupa)`,f:()=>{const T=CAREER.trophies||[];dialog([{who:'',t:T.length?'Kupaların: '+T.map(t=>t.n||t.t||t).join(', '):'Raf boş. İlk kupa geldiğinde burada parlayacak!'}]);}});
@@ -8752,6 +8752,15 @@ function phySurf(){const k=(typeof V!=='undefined'&&V.key)||'';const rain=typeof
   p.vx=nvx;p.vz=nvz;
   // eğim: hızlanırken öne, dönerken içe yatma (görsel)
   try{const g=p.mesh&&p.mesh.g;if(g){const accF=((nvx-vx)*Math.sin(p.face||0)+(nvz-vz)*Math.cos(p.face||0))/dt;const latF=(-(nvx-vx)*Math.cos(p.face||0)+(nvz-vz)*Math.sin(p.face||0))/dt;p._lean=lerp(p._lean||0,clamp(accF*0.012,-0.12,0.16),Math.min(1,dt*6));p._bank=lerp(p._bank||0,clamp(latF*0.01,-0.14,0.14),Math.min(1,dt*6));}}catch(e){}};}
+
+</script>
+<script>
+// ===== EMİR EŞİTLİĞİ: şehirde Emir'in kendi yatağı (Doruk'un dairesinde ikinci yatak), aynı yatağa iki kişi düşmesin =====
+(function emirBed(){try{if(typeof W15==='undefined'||!W15.bedD)return;const b=W15.bedD;const E=[b[0]+2.3,b[1],b[2]];W15.bedE=E;
+ const m=(c)=>new THREE.MeshLambertMaterial({color:c});const add=(w,h,d,x,y,z,c)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m(c));o.position.set(x,y,z);o.castShadow=true;scene.add(o);return o;};
+ add(1.0,0.22,2.0,E[0],0.11,E[2],0x6b4a2e);add(0.95,0.12,1.9,E[0],0.28,E[2],0xf2efe8);add(0.97,0.06,1.2,E[0],0.36,E[2]+0.3,0x2f6fb0);add(0.6,0.12,0.35,E[0],0.38,E[2]-0.72,0xffffff);
+}catch(e){console.warn('emirBed',e);}})();
+{const _cs=cityState;cityState=function(){const r=_cs.apply(this,arguments);try{if(typeof stGuest==='function'&&stGuest()&&COOP.mySlot===1&&W15.bedE)CITY.bed=W15.bedE.slice();}catch(e){}return r;};}
 
 </script>
 </body>

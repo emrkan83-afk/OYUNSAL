@@ -1786,7 +1786,7 @@ function intro(){dialog([{w:'Hacı Abi (bakkal)',t:'Akif, Doruk, Emir... Gelin h
 document.querySelectorAll('#whoSel button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#whoSel button').forEach(x=>x.classList.remove('on'));b.classList.add('on');PL.name=b.dataset.w;try{localStorage.setItem('adana_who',PL.name);}catch(e){}});
 try{const w=localStorage.getItem('adana_who');if(w){PL.name=w;document.querySelectorAll('#whoSel button').forEach(x=>x.classList.toggle('on',x.dataset.w===w));}}catch(e){}
 $('#bSolo').onclick=()=>{AC&&AC.resume();startGame();};
-$('#bNew').onclick=()=>{if(confirm('Kayıt silinsin mi? Bütün mahalleler ve para sıfırlanır.')){localStorage.removeItem(SAVE_KEY);localStorage.removeItem(SAVE_KEY+'_me');location.reload();}};
+$('#bNew').onclick=()=>{if(confirm('Kayıt silinsin mi? Bütün mahalleler ve para sıfırlanır.')){localStorage.removeItem(SAVE_KEY);localStorage.removeItem(SAVE_KEY+'_me');try{Object.keys(localStorage).filter(k=>k.startsWith('adana_x_')).forEach(k=>localStorage.removeItem(k));}catch(e){}location.reload();}};
 $('#bHost').onclick=async()=>{$('#netStat').textContent='Oda kuruluyor...';try{const code=await NET.startHost();$('#netStat').innerHTML=`Oda kodu: <b style="font-size:22px;color:#ffc83d">${code}</b> · Doruk ve Emir bu kodla katılsın`;toast('ODA KODU: '+code,'Arkadaşların menüden bu kodla katılır',8000);startGame();}catch(e){$('#netStat').textContent='Hata: '+(e.message||e.type||e);}};
 $('#bJoin').onclick=async()=>{const code=$('#joinCode').value.trim();if(!code)return;$('#netStat').textContent='Bağlanılıyor...';try{await NET.join(code,PL.name);startGame();toast('BAĞLANDIN','Ev sahibinin dünyasındasın',2500);}catch(e){$('#netStat').textContent='Hata: '+(e.message||e.type||e);}};
 // ---- E ----
@@ -6584,6 +6584,27 @@ XT.push(function jailGearTick(){const j=inJail();if(j&&PL.cur!=='yumruk'){PL._jp
 const INMATE_LOOK=[{shirt:0x8a8a82,pants:0x6e6e66},{shirt:0xc8692a,pants:0xb85e24},{shirt:0x7d7f86,pants:0x5f6168}];
 XT.push(function inmateLook(){if(typeof NPCS==='undefined')return;for(const n of NPCS){if(!n.inmate||n._ilook||!n.H||!n.hb||!n.hb.alive)continue;n._ilook=1;const L=INMATE_LOOK[(n.id||0)%INMATE_LOOK.length];
   const H=mkHuman({shirt:L.shirt,pants:L.pants,hair:pick([0x111111,0x2b1d14,0x3b2618,0x555555]),beard:Math.random()<0.6});H.g.position.copy(n.H.g.position);H.g.rotation.y=n.H.g.rotation.y;scene.remove(n.H.g);scene.add(H.g);n.H=H;if(n.lbl)n.lbl.obj=H.g;}});
+
+</script>
+<script>
+// ===== v1.4 · K4: araçların içinden geçilmez (oyuncu + yayalar, herkesin ekranında), F ile en yakın araca bin, kaçan siviller duvara koşmaz =====
+// ---------- 1) araç gövdesi yayaları iter (yönlü kutu) ----------
+function carHalf(c){const M=c.M||{};if(M.bike)return [0.4,1.05];return [((M.suv||M.van)?1.9:1.75)/2,(M.len||4.3)/2];}
+function pushOutCar(o,r,y){let hit=false;for(const c of CARS){if(Math.abs(c.x-o.x)>4||Math.abs(c.z-o.z)>4)continue;if(y>(c.y||0)+1.35)continue;const [hw,hl]=carHalf(c);const fx=Math.sin(c.yaw),fz=Math.cos(c.yaw),rx=Math.cos(c.yaw),rz=-Math.sin(c.yaw);
+  const dx=o.x-c.x,dz=o.z-c.z;const lz=dx*fx+dz*fz,lx=dx*rx+dz*rz;const ex=hw+r-Math.abs(lx),ez=hl+r-Math.abs(lz);if(ex>0&&ez>0){if(ex<ez){const s=Math.sign(lx)||1;o.x+=rx*ex*s;o.z+=rz*ex*s;}else{const s=Math.sign(lz)||1;o.x+=fx*ez*s;o.z+=fz*ez*s;}hit=true;}}return hit;}
+XT.push(function carPedTick(){try{if(!PL.car&&!PL.down&&!PL.sleep){const o={x:PL.x,z:PL.z};if(pushOutCar(o,0.34,PL.y||0)){PL.x=o.x;PL.z=o.z;}}
+  for(const n of NPCS){if(!n.hb||!n.hb.alive||n.car||n.sit)continue;if(Math.abs(n.x-PL.x)+Math.abs(n.z-PL.z)>60)continue;const o={x:n.x,z:n.z};if(pushOutCar(o,0.32,n.y||0)){n.x=o.x;n.z=o.z;}}}catch(e){}});
+// ---------- 2) araca binmek: F tuşu da çalışır, menzil biraz geniş ----------
+{const _nc=nearCar;nearCar=function(){const c=_nc();if(c)return c;let b=null,bd=4.4;for(const k of CARS){if(k.ai&&k.ai.kind!=='traffic')continue;const d=Math.hypot(k.x-PL.x,k.z-PL.z);if(d<bd&&k.seats.some(s=>!s||s==='ai'||String(s).startsWith('c'))){bd=d;b=k;}}return b;};}
+KEYH.unshift((c)=>{if(c!=='KeyF'||!UI.free()||!started||PL.car||PL.down||PL.sleep||UI.photo)return;const car=nearCar();if(car){enterCar(car);return true;}});
+// ---------- 3) kaçan sivil: önü duvarsa yön değiştirir, takılırsa yeni yol bulur ----------
+function fleeFree(x,z,dx,dz){for(let s=0.8;s<=2.4;s+=0.8){if(hasColAt(x+dx*s,z+dz*s,0.5))return false;}return true;}
+XT.push(function fleeSteer(dt){if(typeof NET!=='undefined'&&NET.guest)return;for(const n of NPCS){if(n.state!=='flee'||!n.hb||!n.hb.alive)continue;n._fsT=(n._fsT||0)-dt;if(n._fsT>0)continue;n._fsT=0.25;
+  const l=Math.hypot(n.fx||0,n.fz||0)||1;let dx=(n.fx||0)/l,dz=(n.fz||0)/l;const moved=n._fpx==null?1:Math.hypot(n.x-n._fpx,n.z-n._fpz);n._fpx=n.x;n._fpz=n.z;
+  if(fleeFree(n.x,n.z,dx,dz)&&moved>0.25)continue;
+  // tehlikeden uzaklaşan, önü açık en yakın yönü seç
+  const base=Math.atan2(dx,dz);let best=null;for(const a of [0.6,-0.6,1.2,-1.2,1.8,-1.8,2.5,-2.5,Math.PI]){const ang=base+a*(n._fside||1);const ex=Math.sin(ang),ez=Math.cos(ang);if(fleeFree(n.x,n.z,ex,ez)){best=[ex,ez];break;}}
+  if(!best){n._fside=-(n._fside||1);best=[-dx,-dz];}n.fx=best[0]*10;n.fz=best[1]*10;}});
 
 </script>
 </body></html>

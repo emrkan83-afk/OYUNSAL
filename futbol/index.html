@@ -8755,10 +8755,17 @@ function phySurf(){const k=(typeof V!=='undefined'&&V.key)||'';const rain=typeof
 
 </script>
 <script>
-// ===== EMİR EŞİTLİĞİ: şehirde Emir'in kendi yatağı (Doruk'un dairesinde ikinci yatak), aynı yatağa iki kişi düşmesin =====
-(function emirBed(){try{if(typeof W15==='undefined'||!W15.bedD)return;const b=W15.bedD;const E=[b[0]+2.3,b[1],b[2]];W15.bedE=E;
- const m=(c)=>new THREE.MeshLambertMaterial({color:c});const add=(w,h,d,x,y,z,c)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m(c));o.position.set(x,y,z);o.castShadow=true;scene.add(o);return o;};
- add(1.0,0.22,2.0,E[0],0.11,E[2],0x6b4a2e);add(0.95,0.12,1.9,E[0],0.28,E[2],0xf2efe8);add(0.97,0.06,1.2,E[0],0.36,E[2]+0.3,0x2f6fb0);add(0.6,0.12,0.35,E[0],0.38,E[2]-0.72,0xffffff);
+// ===== EMİR EŞİTLİĞİ: şehirde Doruk'un dairesinde Emir'in yatağı =====
+// Daire yerel düzeni (10x8): Doruk yatağı x0.6-2.2 z0.5-2.7 · mutfak x3-6.2 z0-0.7 · TV x6.4-8 · halı/sehpa/koltuk x5-8.4 z3.6-6.1 · dolap x9-10 · kapı x4.45-5.55 z=8 (giriş noktası x5 z6.8)
+// Emir'in yatağı batı duvarı boyunca: x0.25-1.25, z3.6-5.6 → duvara 0.25 m mesafe, kapıya ~4 m, kapı-oda yolu (x4-6) tamamen boş.
+(function emirBed(){try{if(typeof W15==='undefined'||!W15.bedD)return;const b=W15.bedD;const ox=b[0]-1.4,oz=b[2]-1.6;const cx=ox+0.75,cz=oz+4.6;W15.bedE=[cx,0,cz];
+ const m=(c)=>new THREE.MeshLambertMaterial({color:c});const add=(w,h,d,x,y,z,c)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m(c));o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;scene.add(o);return o;};
+ add(1.0,0.4,2.0,cx,0.2,cz,0x6b4a30);            // karyola
+ add(0.94,0.16,1.92,cx,0.48,cz,0xf2f2f2);        // yatak
+ add(0.96,0.07,1.15,cx,0.59,cz+0.35,0x2e7d4f);   // battaniye (yeşil)
+ add(0.7,0.12,0.32,cx,0.62,cz-0.72,0xffffff);    // yastık (duvar tarafı değil, uç)
+ add(1.0,0.75,0.07,cx,0.38,cz-1.0,0x5a3a22);     // başlık
+ try{col(cx-0.5,cx+0.5,cz-1.0,cz+1.0);}catch(e){}
 }catch(e){console.warn('emirBed',e);}})();
 {const _cs=cityState;cityState=function(){const r=_cs.apply(this,arguments);try{if(typeof stGuest==='function'&&stGuest()&&COOP.mySlot===1&&W15.bedE)CITY.bed=W15.bedE.slice();}catch(e){}return r;};}
 

@@ -244,7 +244,7 @@ body.tdview #cross,body.tdview #duoPass{display:none!important}
 </style>
 <link rel="manifest" href="manifest.json"><meta name="theme-color" content="#0f5132"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
 <script>if('serviceWorker' in navigator){addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').then(r=>{r.update();});});}
-(function(){var V='26.11 20:45',K='pwa_ver_futbol';addEventListener('load',function(){try{var old=localStorage.getItem(K);localStorage.setItem(K,V);var nw=old&&old!==V;var d=document.createElement('div');
+(function(){var V='26.11 21:50',K='pwa_ver_futbol';addEventListener('load',function(){try{var old=localStorage.getItem(K);localStorage.setItem(K,V);var nw=old&&old!==V;var d=document.createElement('div');
 d.style.cssText='position:fixed;left:12px;bottom:12px;z-index:99999;padding:8px 14px;border-radius:10px;font:700 14px system-ui,Arial;color:#fff;pointer-events:none;transition:opacity .8s;box-shadow:0 4px 14px rgba(0,0,0,.4);background:'+(nw?'#1f9d55':'rgba(20,20,20,.75)');
 d.textContent=nw?'✅ GÜNCELLENDİ · sürüm '+V:'Sürüm '+V;document.body.appendChild(d);setTimeout(function(){d.style.opacity='0';setTimeout(function(){d.remove();},900);},nw?10000:5000);}catch(e){}});})();</script>
 </head>
@@ -263,7 +263,7 @@ d.textContent=nw?'✅ GÜNCELLENDİ · sürüm '+V:'Sürüm '+V;document.body.ap
   <div id="board"><span class="tm"><span class="dot" id="dotA" style="background:var(--us)"></span><span id="tmA">Bizim Sokak</span></span><span class="sc" id="score">0 - 0</span><span class="tm"><span id="tmB">Rakip</span><span class="dot" id="dotB" style="background:var(--them);margin:0 0 0 6px"></span></span><span class="clk" id="clock">5:00</span></div>
   <div id="feed"></div>
   <div id="team"><div class="cards" id="cards"></div><div id="cmds" class="hide"></div></div>
-  <div id="help"><kbd>Fare</kbd> bak · <kbd>WASD</kbd> koş · <kbd>Shift</kbd> depar<br><kbd>Sağ tık</kbd>/<kbd>E</kbd> pas · <kbd>F</kbd> basılı plase · <kbd>C</kbd> basılı havadan pas (ligde)<br><kbd>Sol tık</kbd>/<kbd>Space</kbd> basılı tut = şut (yukarı bak = aşırtma)<br>Topsuzken: <kbd>Sol tık</kbd>/<kbd>Space</kbd> kayarak gir, <b>top havadaysa kafa</b> · <kbd>Sağ tık</kbd>/<kbd>E</kbd> "Bana ver!"<br>Top sendeyken: <kbd>Q</kbd> ayak arası · <kbd>R</kbd> sektirip geç<br><kbd>1-4</kbd> arkadaş · <kbd>Z X C V B N</kbd> komut · <kbd>T</kbd> taktik kamera · <kbd>P</kbd> mola</div>
+  <div id="help"><kbd>Fare</kbd> bak · <kbd>WASD</kbd> koş · <kbd>Shift</kbd> depar<br><kbd>Sağ tık</kbd>/<kbd>E</kbd> pas · <kbd>F</kbd> SERT ŞUT · <kbd>G</kbd> basılı plase · <kbd>Q</kbd> zıpla/kafa · <kbd>C</kbd> basılı havadan pas (ligde)<br><kbd>Sol tık</kbd>/<kbd>Space</kbd> basılı tut = şut (yukarı bak = aşırtma)<br>Topsuzken: <kbd>Sol tık</kbd>/<kbd>Space</kbd> kayarak gir, <b>top havadaysa kafa</b> · <kbd>Sağ tık</kbd>/<kbd>E</kbd> "Bana ver!"<br>Top sendeyken: <kbd>Q</kbd> ayak arası · <kbd>R</kbd> sektirip geç<br><kbd>1-4</kbd> arkadaş · <kbd>Z X C V B N</kbd> komut · <kbd>T</kbd> taktik kamera · <kbd>P</kbd> mola</div>
   <div id="power" class="hide"><span>ŞUT GÜCÜ</span><i></i></div>
 </div>
 <div id="toast"></div>
@@ -274,7 +274,7 @@ d.textContent=nw?'✅ GÜNCELLENDİ · sürüm '+V:'Sürüm '+V;document.body.ap
   <h1>İKİ DOST<br>BİR EMBESİL</h1><div style="font:800 22px Rubik;color:var(--gold);margin-top:6px">(EMİR)</div>
   <div class="sub">Bizim Sokak'tan Süper Lig'e</div>
   <p>Akif'sin. Sabah yataktan kalk, annenin isteğini dinle, zilleri çalıp ekibi topla, maça yürü. 14 haftalık mahalle liginden sonra halı sahada bir scout seni izleyecek. Sonrası amatör lig, 1. Lig, Süper Lig... Her gün başka bir hikâye.</p>
-  <div class="keys"><kbd>Fare</kbd> etrafa bak · <kbd>WASD</kbd> yürü · <kbd>Shift</kbd> koş · <kbd>E</kbd> etkileşim (zil, konuş, otur, al)<br>Maçta: <kbd>Sağ tık</kbd> pas · <kbd>Sol tık</kbd> basılı şut · <kbd>F</kbd> basılı plase · <kbd>C</kbd> basılı havadan pas (ligde) · <kbd>T</kbd> taktik kamera · <kbd>P</kbd> telefon (mesaj, banka, kariyer) · <kbd>M</kbd> harita</div>
+  <div class="keys"><kbd>Fare</kbd> etrafa bak · <kbd>WASD</kbd> yürü · <kbd>Shift</kbd> koş · <kbd>E</kbd> etkileşim (zil, konuş, otur, al)<br>Maçta: <kbd>Sağ tık</kbd> pas · <kbd>Sol tık</kbd> basılı şut · <kbd>F</kbd> SERT ŞUT · <kbd>G</kbd> basılı plase · <kbd>Q</kbd> zıpla/kafa · <kbd>C</kbd> basılı havadan pas (ligde) · <kbd>T</kbd> taktik kamera · <kbd>P</kbd> telefon (mesaj, banka, kariyer) · <kbd>M</kbd> harita</div>
   <button id="cont" class="hide"></button>
   <button id="go">Yeni oyun: Uyan, Akif!</button>
   <button id="online" style="margin-top:8px;background:#2f9f5a">🌐 Online 2 kişilik kariyer</button>
@@ -3108,7 +3108,7 @@ addEventListener('keydown',e=>{const ae=document.activeElement;if(ae&&ae.tagName
   if(k==='h'&&mode!=='dialog'){togglePhoto();return;}
   if(k==='enter'&&COOP.on&&['roam','match','gmatch'].includes(mode)){openCoopChat();return;}
   if(mode==='shop'&&PR&&k===' '){prShoot();return;}
-  if(mode==='gmatch'){if(k==='t'){COOP.gcam=COOP.gcam==='tac'?'fp':'tac';toast(COOP.gcam==='tac'?'TAKTİK KAMERA':'BİRİNCİ ŞAHIS','',800);return;}if(k===' '){if(guestOwnHasBall()){COOP.charging=true;COOP.charge=0;}else guestAct('tackle');}if(k==='e')guestAct(guestOwnHasBall()?'pass':'call');if((k==='f'||k==='c')&&guestOwnHasBall()&&!COOP.ch){if(k==='c'&&V.key==='sokak'){toast('Mahallede havadan pas yok','Yerden oyna!',900);return;}COOP.ch={t:k==='f'?'plase':'lobc',c:0};}return;}
+  if(mode==='gmatch'){if(k==='t'){COOP.gcam=COOP.gcam==='tac'?'fp':'tac';toast(COOP.gcam==='tac'?'TAKTİK KAMERA':'BİRİNCİ ŞAHIS','',800);return;}if(k===' '){if(guestOwnHasBall()){COOP.charging=true;COOP.charge=0;}else guestAct('tackle');}if(k==='e')guestAct(guestOwnHasBall()?'pass':'call');if(k==='f'&&guestOwnHasBall()){guestAct('pshot',1);return;}if(k==='q'){guestAct('jump');return;}if((k==='g'||k==='c')&&guestOwnHasBall()&&!COOP.ch){if(k==='c'&&V.key==='sokak'){toast('Mahallede havadan pas yok','Yerden oyna!',900);return;}COOP.ch={t:k==='g'?'plase':'lobc',c:0};}return;}
   if(k==='p'&&(mode==='roam'||mode==='sit'||mode==='phone')){phoneToggle();return;}
   if(mode==='phone'){if(k==='escape')phoneToggle(false);return;}
   if(k==='m'&&(mode==='roam'||mode==='map')){toggleMap();return;}
@@ -3126,8 +3126,8 @@ addEventListener('keydown',e=>{const ae=document.activeElement;if(ae&&ae.tagName
   if(state!=='play'&&state!=='setpiece'||akif.benched)return;
   if(k===' '){if(ball.owner===akif){charging=true;charge=0;}else userTackle();}
   if(k==='e'){if(ball.owner===akif)userPass(false);else callForBall();}
-  if((k==='f'||k==='c')&&mode==='match'&&ball.owner===akif&&!akif.benched&&!CH2){if(k==='c'&&V.key==='sokak'){toast('Mahallede havadan pas yok','Yerden oyna!',900);return;}CH2={t:k==='f'?'plase':'lobc',c:0};}});
-addEventListener('keyup',e=>{const k=e.key.toLowerCase();keys[k]=false;if((k==='f'||k==='c')&&CH2&&CH2.t===(k==='f'?'plase':'lobc'))releaseCH2();if((k==='f'||k==='c')&&COOP.ch&&COOP.ch.t===(k==='f'?'plase':'lobc')){const ch=COOP.ch;COOP.ch=null;guestAct(ch.t,ch.c);$('#power').classList.add('hide');}if(k===' '&&charging)releaseShot();if(k===' '&&COOP.charging){COOP.charging=false;guestAct('shoot',COOP.charge);$('#power').classList.add('hide');}});
+  if(k==='f'&&ball.owner===akif){userPowerShot();return;}if(k==='q'){userJump();return;}if((k==='g'||k==='c')&&mode==='match'&&ball.owner===akif&&!akif.benched&&!CH2){if(k==='c'&&V.key==='sokak'){toast('Mahallede havadan pas yok','Yerden oyna!',900);return;}CH2={t:k==='g'?'plase':'lobc',c:0};}});
+addEventListener('keyup',e=>{const k=e.key.toLowerCase();keys[k]=false;if((k==='g'||k==='c')&&CH2&&CH2.t===(k==='g'?'plase':'lobc'))releaseCH2();if((k==='g'||k==='c')&&COOP.ch&&COOP.ch.t===(k==='g'?'plase':'lobc')){const ch=COOP.ch;COOP.ch=null;guestAct(ch.t,ch.c);$('#power').classList.add('hide');}if(k===' '&&charging)releaseShot();if(k===' '&&COOP.charging){COOP.charging=false;guestAct('shoot',COOP.charge);$('#power').classList.add('hide');}});
 addEventListener('blur',()=>{for(const k in keys)keys[k]=false;});
 function releaseShot(){charging=false;if(ball.owner===akif)userShoot(charge);charge=0;$('#power').classList.add('hide');}
 
@@ -8755,6 +8755,36 @@ function phySurf(){const k=(typeof V!=='undefined'&&V.key)||'';const rain=typeof
   p.vx=nvx;p.vz=nvz;
   // eğim: hızlanırken öne, dönerken içe yatma (görsel)
   try{const g=p.mesh&&p.mesh.g;if(g){const accF=((nvx-vx)*Math.sin(p.face||0)+(nvz-vz)*Math.cos(p.face||0))/dt;const latF=(-(nvx-vx)*Math.cos(p.face||0)+(nvz-vz)*Math.sin(p.face||0))/dt;p._lean=lerp(p._lean||0,clamp(accF*0.012,-0.12,0.16),Math.min(1,dt*6));p._bank=lerp(p._bank||0,clamp(latF*0.01,-0.14,0.14),Math.min(1,dt*6));}}catch(e){}};}
+// ===== OYNANIŞ v2: F sert şut, Q zıpla/kafa (savunmada şut bloklama), rakip 1'e 1'de vurur, santrada gerçek diziliş, baskı yapan savunmacı çalımda temas eder, oyuncular birbirinin içinden geçmez, aynı isim tekrarı yok =====
+// ---- F: sert şut ----
+function userPowerShot(){if(ball.owner!==akif||akif.benched||!(state==='play'||state==='setpiece'))return;stats.shots++;akif.st.sho++;const err=((1-akif.attr.sho)*0.1+shotErr(akif)*1.2+0.015)*rnd(-1,1);
+ if(camMode==='fp'){const [fx,fz]=lookDir();kick(akif,fx,fz,31+Math.min(3,SC),1.0+Math.max(0,me.pitch+0.25)*3.2,err,true,1);}
+ else{let iz=0;if(keys.w)iz=-1;if(keys.s)iz=1;const gk=keeperOf(1);const tz=iz<0?-GHW+0.5:iz>0?GHW-0.5:(gk&&gk.z>0?-GHW+0.6:GHW-0.6);const gx=dirOf(akif.team)*(L+0.5);kick(akif,gx-akif.x,tz-akif.z,31+Math.min(3,SC),1.25,err,true,1);}
+ ball.side=0;ball.wob=rnd(0.5,1.0);try{sfx.kick(1);}catch(e){}toast('💥 SERT ŞUT','',600);}
+// ---- Q: zıpla (top yakındaysa kafa) ----
+function userJump(){if(mode!=='match'||akif.benched||!(state==='play'||state==='setpiece'))return;if(akif.jumpT>0)return;const [fx,fz]=camMode==='fp'?lookDir():[dirOf(akif.team),0];if(typeof w14UserHead==='function')w14UserHead(akif,fx,fz);else akif.jumpT=0.45;}
+{const _dra=doRemoteAct;doRemoteAct=function(p,a){if(a&&(a.type==='pshot'||a.type==='jump')){if(mode!=='match'||(state!=='play'&&state!=='setpiece'))return;const [fx,fz]=lookOf(a.yaw||0);
+  if(a.type==='pshot'&&ball.owner===p){stats.shots++;p.st.sho++;const err=((1-p.attr.sho)*0.1+shotErr(p)*1.2+0.015)*rnd(-1,1);kick(p,fx,fz,31+Math.min(3,SC),1.0+Math.max(0,(a.pitch||0)+0.25)*3.2,err,true,1);ball.side=0;ball.wob=rnd(0.5,1);return;}
+  if(a.type==='jump'&&!(p.jumpT>0)){if(typeof w14UserHead==='function')w14UserHead(p,fx,fz);else p.jumpT=0.45;}return;}return _dra.apply(this,arguments);};}
+// ---- zıplayan oyuncu şutu / havadan topu bloklar ----
+{const _ub2=updateBall;updateBall=function(dt){_ub2(dt);try{if(ball.owner||!ball.shot)return;for(const p of MP){if(p.quit||p.gone||!(p.jumpT>0)||p.isGK)continue;if(ball.last&&ball.last.team===p.team)continue;const d=hyp(ball.x-p.x,ball.z-p.z);if(d<0.75&&ball.y>0.9&&ball.y<2.5){const s=Math.hypot(ball.vx,ball.vz);const ax=(ball.x-p.x)/(d||1),az=(ball.z-p.z)/(d||1);ball.vx=ax*s*0.35+rnd(-1,1);ball.vz=az*s*0.35+rnd(-1,1);ball.vy=Math.abs(ball.vy)*0.3+1.5;ball.shot=false;ball.side=0;ball.wob=0;ball.last=p;try{say(p,pick(['Kafayla blok!','Geçemezsin!','Benim o!']),false,false);sfx.kick(0.5);}catch(e){}break;}}}catch(e){}};}
+// ---- 1'e 1: önü boşsa vurur ----
+function clearChance(p){const d=dirOf(p.team),gx=d*L;const dist=hyp(gx-p.x,p.z);if(dist>Math.min(L*0.6,16*Math.min(SC,1.7))||Math.abs(p.z)>GHW*3+4)return false;
+ for(const q of MP){if(q.team===p.team||q.quit||q.gone||q.isGK)continue;if((q.x-p.x)*d<-0.5)continue;if(segDist(q.x,q.z,p.x,p.z,gx,0)<1.6)return false;}return true;}
+{const _ca=carrierAI;carrierAI=function(p,dt){try{if(state==='play'&&!p.user&&!p.remote&&!p.isGK&&p.ai.t-dt<=0&&clearChance(p)){const d=dirOf(p.team),gx=d*L;const gk=keeperOf(1-p.team);const dist=hyp(gx-p.x,p.z);
+   if(!(p._1v1>0)){p._1v1=rnd(0.15,0.5);}p._1v1-=dt;if(p._1v1<=0||dist<7*Math.min(SC,1.6)){p._1v1=0;p.ai.t=0.5;const tz=gk?(gk.z>p.z*0.2?-GHW+0.45:GHW-0.45):rnd(-GHW*0.6,GHW*0.6);const chip=gk&&Math.abs(gk.x-gx)>4&&dist>10&&Math.random()<0.35;shoot(p,tz,rnd(0.72,0.95),chip);return;}}}catch(e){}return _ca.apply(this,arguments);};}
+// ---- santra: herkes kendi mevkisinde dizilir ----
+{const _pk=placeKickoff;placeKickoff=function(kt){_pk.apply(this,arguments);try{const cr=Math.min(L*0.17,9.15);for(const p of MP){if(p.quit||p.isGK||p===ball.owner)continue;const d=dirOf(p.team);const t=clamp((p.hx+0.6)/1.0,0,1);let x=-L*(0.62-0.55*t)+rnd(-0.4,0.4);let z=p.z;
+   if(p.team!==kt&&hyp(x,z)<cr+0.5){x=-Math.sqrt(Math.max(0,(cr+0.6)**2-z*z))-0.3;}if(p.team===kt&&x>-0.8)x=-0.8-rnd(0,0.6);p.x=x*d;}
+   const k=ball.owner;if(k){const mate=alive(kt).filter(q=>q!==k&&!q.isGK).sort((a,b)=>hyp(a.x,a.z)-hyp(b.x,b.z))[0];if(mate){mate.x=-1.2*dirOf(kt);mate.z=(mate.z>0?1:-1)*Math.min(3,FW*0.25);}}}catch(e){}};}
+// ---- baskı: savunmacı çalımcının üstüne gelir, temas eder, top kapma dener ----
+{const _ai=aiPlayer;aiPlayer=function(p,dt,R){try{const own=ball.owner;if(own&&own.team!==p.team&&!p.isGK&&state==='play'&&(R.presser===p||(R.second===p&&hyp(own.x-p.x,own.z-p.z)<2.6))){const d=hyp(own.x-p.x,own.z-p.z);if(d<4.5){
+   const px=own.x+(own.vx||0)*0.28,pz=own.z+(own.vz||0)*0.28;moveTo(p,px,pz,true,dt);
+   if(d<1.45&&p.tackleCd<=0&&p.stun<=0&&own.slideT<=0){const lat=Math.abs((own.vx||0)*Math.cos(own.face||0)-(own.vz||0)*Math.sin(own.face||0));const rate=(1.9+lat*0.25)*(0.5+p.attr.def)*(1+p.nerve/120)*(R.presser===p?1:0.6);if(Math.random()<rate*dt)tackle(p,own,false);}return;}}}catch(e){}return _ai.apply(this,arguments);};}
+// ---- oyuncular birbirinin içinden geçmez (omuz omuza temas) ----
+{const _sp=stepPlayers;stepPlayers=function(dt){_sp(dt);try{if(mode!=='match')return;const A=MP.filter(p=>!p.quit&&!p.gone&&!(p.slideT>0));for(let i=0;i<A.length;i++)for(let j=i+1;j<A.length;j++){const a=A[i],b=A[j];const dx=b.x-a.x,dz=b.z-a.z;const d=Math.hypot(dx,dz);const R=0.62;if(d>0.001&&d<R){const k=(R-d)/2,ux=dx/d,uz=dz/d;const wa=a===ball.owner?0.35:0.5,wb=b===ball.owner?0.35:0.5;const s=wa+wb;a.x-=ux*k*2*wa/s;a.z-=uz*k*2*wa/s;b.x+=ux*k*2*wb/s;b.z+=uz*k*2*wb/s;}}}catch(e){}};}
+// ---- aynı isimli iki oyuncu olmasın ----
+{const _sm=startMatch;startMatch=function(cfg){const r=_sm.apply(this,arguments);try{const seen=new Set();for(const p of MP){let n=p.name;if(!n)continue;if(seen.has(n)&&!p.user&&p!==P2&&!(typeof P3!=='undefined'&&p===P3)){const fn=n.split(' ')[0];let tries=0;do{n=fn+' '+pick(SN);tries++;}while(seen.has(n)&&tries<30);if(seen.has(n))n=fn+' '+(tries+2);p.name=n;try{if(p.lbl)p.lbl.textContent=n;}catch(e){}}seen.add(n);}}catch(e){}return r;};}
 
 </script>
 <script>

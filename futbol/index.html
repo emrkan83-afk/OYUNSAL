@@ -6787,9 +6787,9 @@ const tbxT=()=>{const t=tbxSt().tac;return k=>t.includes(k);};
 // ağırlık mini oyunu: 8 saniyede BOŞLUK'a (ya da düğmeye) hızlı bas, bar dolunca 1 tekrar
 const GYM={on:false};function gymStart(){let el=$('#gymM');if(!el){el=document.createElement('div');el.id='gymM';el.className='modal';el.style.cssText='position:fixed;inset:0;z-index:83;display:flex;align-items:center;justify-content:center;background:rgba(5,8,10,.7)';document.body.appendChild(el);
     el.addEventListener('pointerdown',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.lift)gymPress();if(b.dataset.k)gymPick(b.dataset.k);if(b.dataset.x){el.classList.add('hide');GYM.on=false;if(mode==='shop')mode='roam';try{lock();}catch(e2){}}});
-    window.addEventListener('keydown',e=>{if(GYM.on&&GYM.t>0&&(e.code==='Space'||e.key===' ')){e.preventDefault();gymPress();}});}
+    window.addEventListener('keydown',e=>{if(GYM.on&&GYM.t>0&&(e.code==='Space'||e.key===' ')){e.preventDefault();gymPress();}if(GYM.on&&e.code==='Escape'){el.classList.add('hide');GYM.on=false;if(mode==='shop')mode='roam';try{lock();}catch(e2){}}});}
   Object.assign(GYM,{on:true,t:8,p:0,reps:0,done:false});el.classList.remove('hide');mode='shop';window.__noPause=1;if(document.pointerLockElement)document.exitPointerLock();
-  el.innerHTML=`<div style="background:#1a1f24;border:2px solid #ffc83d;border-radius:14px;padding:16px;width:min(460px,92vw);color:#f4ead2;font:600 14px Rubik,Arial;text-align:center"><b style="color:#ffc83d;font-size:18px">🏋️ AĞIRLIK</b><br><small>8 saniye! <b>BOŞLUK</b> tuşuna (ya da düğmeye) hızlı hızlı bas. Bar dolunca 1 tekrar.</small>
+  el.innerHTML=`<div style="background:#1a1f24;border:2px solid #ffc83d;border-radius:14px;padding:16px;width:min(460px,92vw);color:#f4ead2;font:600 14px Rubik,Arial;text-align:center;position:relative"><button data-x="1" style="position:absolute;top:8px;right:8px;border:0;border-radius:8px;padding:6px 10px;font-weight:900;background:#3a3f45;color:#fff;cursor:pointer">✕ Kapat</button><b style="color:#ffc83d;font-size:18px">🏋️ AĞIRLIK</b><br><small>8 saniye! <b>BOŞLUK</b> tuşuna (ya da düğmeye) hızlı hızlı bas. Bar dolunca 1 tekrar.</small>
    <div style="height:26px;background:#333;border-radius:13px;margin:12px 0;overflow:hidden"><div id="gymB" style="height:100%;width:0;background:linear-gradient(90deg,#ffc83d,#e24a33)"></div></div><div id="gymI" style="font-size:16px">Tekrar: 0 · Süre: 8.0</div>
    <button data-lift="1" style="margin-top:10px;border:0;border-radius:10px;padding:14px 26px;font-weight:900;font-size:16px;background:#e24a33;color:#fff;cursor:pointer">KALDIR!</button><div id="gymR"></div></div>`;
   let last=performance.now();const loop=()=>{if(!GYM.on||GYM.done)return;const n=performance.now();const dt=(n-last)/1000;last=n;GYM.t-=dt;GYM.p=Math.max(0,GYM.p-dt*38);const b=$('#gymB');if(b)b.style.width=Math.min(100,GYM.p)+'%';const i=$('#gymI');if(i)i.textContent=`Tekrar: ${GYM.reps} · Süre: ${Math.max(0,GYM.t).toFixed(1)}`;try{if(W12.bar)W12.bar.position.y=1.5+Math.min(1,GYM.p/100)*0.5;}catch(e){}
@@ -8782,9 +8782,11 @@ function babaGo(where){const g=stGuest();const toMah=where==='mah';
 // telefon taksi uygulamasında
 {const _td=taxiDest;taxiDest=function(){const L=_td.apply(this,arguments);try{if(babaOK()){if(!CAREER.inMahalleNow&&me.z>300)L.unshift(['babaM','👨 Babam mahalleye götürsün (ücretsiz)']);else L.unshift(['babaC','👨 Babam şehre bıraksın (ücretsiz)']);}}catch(e){}return L;};}
 {const _tg=taxiGo;taxiGo=function(k){if(k==='babaM'||k==='babaC'){try{phoneToggle(false);}catch(e){}babaGo(k==='babaM'?'mah':'city');return;}return _tg.apply(this,arguments);};}
-// yolculuk menüsü (E): şehirde önce "nasıl gidelim?"
-{const _ot=openTravel;openTravel=function(){if(!babaOK())return _ot.apply(this,arguments);const inM=CAREER.inMahalleNow||me.z<300;
-  dialog([{who:'Yolculuk',t:'Nasıl gidelim?',o:[{t:inM?'👨 Babam şehre bıraksın (ücretsiz)':'👨 Babamı ara, mahalleye götürsün (ücretsiz)',f:()=>setTimeout(()=>babaGo(inM?'city':'mah'),10)},{t:CAREER.car&&!stGuest()?'🚗 Arabam / diğer yerler':'🚕 Taksi / diğer yerler',f:()=>setTimeout(()=>_ot(),10)},{t:'Vazgeç'}]}]);};}
+// yolculuk menüsü (E): mevcut menüye en sona (Vazgeç'ten önce) eklenir; tesiste / maç-antrenman yolculuğunda çıkmaz
+function babaNearFac(){try{return typeof FAC!=='undefined'&&hyp(me.x-FAC.x,me.z-FAC.z)<70;}catch(e){return false;}}
+{const _ot=openTravel;openTravel=function(){if(!babaOK()||babaNearFac())return _ot.apply(this,arguments);const inM=CAREER.inMahalleNow||me.z<300;const _d=dialog;
+  dialog=function(arr){dialog=_d;try{const o=arr&&arr[0]&&arr[0].o;if(o){const k=o.findIndex(x=>x.t==='Vazgeç');o.splice(k<0?o.length:k,0,{t:inM?'👨 Babam şehre bıraksın (ücretsiz)':'👨 Babam mahalleye götürsün (ücretsiz)',f:()=>setTimeout(()=>babaGo(inM?'city':'mah'),10)});}}catch(e){}return _d.apply(this,arguments);};
+  try{return _ot.apply(this,arguments);}finally{dialog=_d;}};}
 
 </script>
 </body>
